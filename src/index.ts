@@ -1,1 +1,3 @@
-console.log('app started');
+const message: string = 'app started';
+
+console.log(message);
