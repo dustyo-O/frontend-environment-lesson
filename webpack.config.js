@@ -1,4 +1,6 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+
 const path = require('path');
 
 module.exports = {
@@ -10,10 +12,10 @@ module.exports = {
   resolve: {
     extensions: ['.ts', '.js'],
     extensionAlias: {
-     '.js': ['.js', '.ts'],
-     '.cjs': ['.cjs', '.cts'],
-     '.mjs': ['.mjs', '.mts']
-    }
+      '.js': ['.js', '.ts'],
+      '.cjs': ['.cjs', '.cts'],
+      '.mjs': ['.mjs', '.mts'],
+    },
   },
   module: {
     rules: [
@@ -21,15 +23,19 @@ module.exports = {
         test: /\.(?:js|mjs|cjs)$/,
         use: {
           loader: 'babel-loader',
-        }
+        },
       },
       {
         test: /\.([cm]?ts)$/,
         loader: 'ts-loader',
-      }
-    ]
+      },
+      {
+        test: /\.css$/i,
+        use: [MiniCssExtractPlugin.loader, 'css-loader'],
+      },
+    ],
   },
   plugins: [new HtmlWebpackPlugin({
     template: './src/index.html',
-  })],
+  }), new MiniCssExtractPlugin()],
 };
