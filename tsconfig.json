@@ -11,6 +11,7 @@
   "include": [
     "./src",
     "webpack.config.js",
-    "webpack.development.config.js"
+    "webpack.development.config.js",
+		"jest.config.js"
   ]
 }
