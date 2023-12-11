@@ -10,6 +10,7 @@ test('render limit-textarea', () => {
 
   limitTextarea({
     insertAdjacentHTML,
+    querySelector: () => {},
   } as unknown as HTMLElement, {
     defaultText: 'test',
     limit: 10,
@@ -23,6 +24,9 @@ test('render limit-textarea', () => {
     content: [{
       block: 'textarea',
       cls: 'limit-textarea__control',
+      attrs: {
+        role: 'textbox',
+      },
       content: 'test',
     }, {
       block: 'div',
@@ -36,5 +40,5 @@ test('render limit-textarea', () => {
   });
 
   expect(insertAdjacentHTML).toHaveBeenCalledTimes(1);
-  expect(insertAdjacentHTML).toHaveBeenCalledWith('afterend', 'test');
+  expect(insertAdjacentHTML).toHaveBeenCalledWith('beforeend', 'test');
 });
