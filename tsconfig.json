@@ -10,9 +10,11 @@
 	},
   "include": [
     "./src",
+		"./tests",
     "webpack.config.js",
     "webpack.development.config.js",
 		"jest.config.js",
-		"jest-setup.ts"
+		"jest-setup.ts",
+		"playwright.config.ts"
   ]
 }
