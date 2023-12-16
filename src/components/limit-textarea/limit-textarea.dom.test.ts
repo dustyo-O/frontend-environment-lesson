@@ -18,7 +18,7 @@ test('limit-textarea renders', () => {
     },
   );
 
-  expect(screen.getByText('Осталось 1 символов')).toBeVisible();
+  expect(screen.getByText('Осталось 1 символов из 10')).toBeVisible();
 });
 
 test('limit-textarea disables on content over limit', () => {
@@ -33,11 +33,11 @@ test('limit-textarea disables on content over limit', () => {
     },
   );
 
-  expect(screen.getByText('Осталось 1 символов')).toBeVisible();
+  expect(screen.getByText('Осталось 1 символов из 10')).toBeVisible();
 
   const control = screen.getByRole('textbox');
 
   fireEvent.input(control, { target: { value: '32332322332323232' } });
 
-  expect(screen.getByText('Вы превысили лимит')).toBeVisible();
+  expect(screen.getByText('Вы превысили лимит в 10 символов')).toBeVisible();
 });
